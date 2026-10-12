@@ -11,6 +11,9 @@
 
 The platform provides species-tailored browsing (Cats, Dogs, Birds, Rabbits, Small Pets), dynamic pet profile management with rule-based veterinary recommendations, live autocomplete search, coupons, and an ACID-compliant 13-step transactional checkout system with inventory tracking.
 
+> [!TIP]
+> **Windows Users:** Check out our dedicated, step-by-step **[Windows Setup & Execution Guide](WINDOWS_SETUP.md)** for 1-click batch scripts (`start_all_windows.bat`), XAMPP setup instructions, and Visual Studio 2022 solution support!
+
 ---
 
 ## 📑 Table of Contents
@@ -24,10 +27,12 @@ The platform provides species-tailored browsing (Cats, Dogs, Birds, Rabbits, Sma
   - [1. Database Initialization](#1-database-initialization)
   - [2. Backend API Setup](#2-backend-api-setup)
   - [3. Frontend Storefront Setup](#3-frontend-storefront-setup)
+- [Windows 1-Click Launchers](#-windows-1-click-launchers)
 - [Interactive Swagger API Documentation](#-interactive-swagger-api-documentation)
 - [Demo User Accounts](#-demo-user-accounts)
 - [Testing & QA Automation](#-testing--qa-automation)
 - [Configuration & Environment Variables](#-configuration--environment-variables)
+- [Windows Setup Guide (WINDOWS_SETUP.md)](WINDOWS_SETUP.md)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -82,6 +87,12 @@ The platform provides species-tailored browsing (Cats, Dogs, Birds, Rabbits, Sma
 
 ```text
 .
+├── PetShop.sln               # Visual Studio 2022 / 2026 Solution File
+├── start_all_windows.bat     # 1-Click Windows Master Launcher (Backend + Frontend + Browser)
+├── run_backend.bat           # 1-Click Windows Backend Launcher (Port 5208)
+├── run_frontend.bat          # 1-Click Windows Frontend Server (Port 3000)
+├── run_tests.bat             # 1-Click Windows Test Suite Runner
+├── WINDOWS_SETUP.md          # Complete Windows Setup & Troubleshooting Guide
 ├── backend/                  # ASP.NET Core Web API (.NET 10)
 │   ├── Authentication/       # JWT Token generator & claim helpers
 │   ├── Configuration/        # Strongly-typed configuration options
@@ -117,7 +128,9 @@ The platform provides species-tailored browsing (Cats, Dogs, Birds, Rabbits, Sma
 │   ├── 15_triggers.sql        # Automated inventory audit triggers
 │   ├── 16_test_queries.sql    # Verification queries
 │   ├── run_all.sql            # Master execution script
-│   └── setup_database.sh      # Automated bash database loader
+│   ├── setup_database.bat    # Automated Windows batch database loader
+│   ├── setup_database.ps1    # Automated Windows PowerShell database loader
+│   └── setup_database.sh     # Automated Linux/macOS bash database loader
 └── tests/                    # Operational Verification & QA
     ├── test_suite.py         # 33-point automated integration test suite
     └── reports/              # Test result JSON output reports
@@ -215,6 +228,23 @@ Open your browser and navigate to:
 ```text
 http://localhost:3000
 ```
+
+---
+
+## 🪟 Windows 1-Click Launchers
+
+For Windows users, we provide pre-configured batch scripts that eliminate manual command-line setup:
+
+| Script | Action |
+| :--- | :--- |
+| **[`sql/setup_database.bat`](sql/setup_database.bat)** | Automatically detects MySQL/XAMPP, prompts for credentials, and deploys `pet_ecommerce_db`. |
+| **[`start_all_windows.bat`](start_all_windows.bat)** | **Master Launcher:** Starts Backend API (port 5208), Frontend server (port 3000), and opens your browser. |
+| **[`run_backend.bat`](run_backend.bat)** | Starts the ASP.NET Core Web API on `http://localhost:5208`. |
+| **[`run_frontend.bat`](run_frontend.bat)** | Starts a local HTTP server for the storefront on `http://localhost:3000`. |
+| **[`run_tests.bat`](run_tests.bat)** | Runs the 33-point automated operational test suite. |
+| **[`PetShop.sln`](PetShop.sln)** | Opens the complete solution directly in **Visual Studio 2022 / 2026** or **JetBrains Rider**. |
+
+> 📖 For detailed instructions, XAMPP setup tips, and troubleshooting, refer to **[WINDOWS_SETUP.md](WINDOWS_SETUP.md)**.
 
 ---
 
