@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - PawHaven BD</title>
+  <meta name="description" content="View ingredients, nutritional analysis, feeding guidelines, customer reviews, and best prices for authentic pet supplies at PawHaven BD.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Breadcrumbs -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <nav id="product-breadcrumbs" class="flex items-center gap-2 text-xs text-slate-500 overflow-x-auto whitespace-nowrap">
+        <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+        <span>/</span>
+        <a href="shop.html" class="hover:text-teal-600 transition">Shop</a>
+        <span>/</span>
+        <span id="breadcrumb-category" class="hover:text-teal-600 transition">Category</span>
+        <span>/</span>
+        <span id="breadcrumb-product-name" class="text-slate-800 font-bold truncate">Loading product...</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Product Detail View -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    
+    <!-- Product Hero Card (Images + Info) -->
+    <div id="product-loading-spinner" class="py-20 text-center">
+      <div class="w-10 h-10 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-slate-500 text-sm font-medium">Loading product specifications...</p>
+    </div>
+
+    <div id="product-content" class="hidden space-y-12">
+      <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 lg:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        
+        <!-- Left: Image Gallery (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="aspect-square bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center p-6 relative overflow-hidden group">
+            <img id="main-product-image" src="" alt="Product Image" class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105">
+            
+            <div id="product-badges-container" class="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none"></div>
+
+            <button id="product-wishlist-toggle-btn" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white text-slate-500 hover:text-red-500 hover:bg-red-50 shadow-md flex items-center justify-center transition" title="Save to Wishlist">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+          </div>
+
+          <!-- Thumbnails -->
+          <div id="product-thumbnails-container" class="flex items-center gap-3 overflow-x-auto scroll-touch-x scrollbar-none pb-2"></div>
+        </div>
+
+        <!-- Right: Purchase Details & Form (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col">
+          
+          <div class="flex items-center gap-2 mb-2">
+            <span id="product-brand-tag" class="text-xs font-bold text-teal-600 uppercase tracking-wider bg-teal-50 px-2.5 py-1 rounded-md"></span>
+            <span id="product-pet-type-tag" class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md"></span>
+          </div>
+
+          <h1 id="product-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mb-3"></h1>
+
+          <!-- Reviews and Rating Bar -->
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+            <div id="product-rating-stars"></div>
+            <span class="text-slate-300">|</span>
+            <a href="#reviews-section" class="text-xs font-semibold text-teal-600 hover:underline">
+              <span id="product-review-count">0</span> verified reviews
+            </a>
+            <span class="text-slate-300">|</span>
+            <span id="product-sku" class="text-xs text-slate-400">SKU: N/A</span>
+          </div>
+
+          <!-- Pricing Bar -->
+          <div class="flex items-baseline gap-3 mb-4">
+            <span id="product-price" class="text-3xl font-black text-slate-900">৳ 0</span>
+            <span id="product-compare-price" class="text-base text-slate-400 line-through hidden">৳ 0</span>
+            <span id="product-discount-pill" class="px-2.5 py-1 text-xs font-black rounded-lg bg-red-50 text-red-600 uppercase tracking-wide hidden">Save 0%</span>
+          </div>
+
+          <!-- Short Description -->
+          <p id="product-short-description" class="text-sm text-slate-600 leading-relaxed mb-6"></p>
+
+          <!-- Variants Selector (Weights, Sizes) -->
+          <div id="product-variants-section" class="mb-6 hidden">
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2.5">Select Size / Variant</h3>
+            <div id="product-variants-list" class="flex flex-wrap gap-2.5"></div>
+          </div>
+
+          <!-- Quantity Stepper & Cart Buttons -->
+          <div class="space-y-4 pt-4 border-t border-slate-100 mb-6">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              
+              <!-- Quantity Stepper -->
+              <div class="flex items-center border border-slate-200 rounded-xl overflow-hidden bg-slate-50 w-32 shrink-0">
+                <button id="qty-decrement-btn" class="w-10 h-11 flex items-center justify-center text-slate-500 hover:bg-slate-200 font-bold text-lg transition">−</button>
+                <input id="product-quantity-input" type="number" value="1" min="1" max="99" class="w-12 text-center font-bold text-sm text-slate-900 bg-transparent focus:outline-none" readonly>
+                <button id="qty-increment-btn" class="w-10 h-11 flex items-center justify-center text-slate-500 hover:bg-slate-200 font-bold text-lg transition">+</button>
+              </div>
+
+              <!-- Add to Cart -->
+              <button id="btn-add-to-cart" class="flex-1 py-3 px-6 rounded-xl bg-slate-900 hover:bg-teal-700 text-white font-extrabold text-sm transition shadow-md flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span>Add to Cart</span>
+              </button>
+
+              <!-- Buy Now -->
+              <button id="btn-buy-now" class="flex-1 py-3 px-6 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm transition shadow-md shadow-teal-600/20 flex items-center justify-center gap-2">
+                <span>Buy Now</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+
+            </div>
+
+            <!-- Stock Availability Indicator -->
+            <div id="product-stock-status" class="flex items-center gap-2 text-xs font-semibold text-emerald-700">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>In Stock • Ready for same-day dispatch in Dhaka</span>
+            </div>
+          </div>
+
+          <!-- Highlights Checklist -->
+          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 text-xs text-slate-600">
+            <div class="flex items-center gap-2">
+              <span class="text-teal-600 font-bold">✓</span>
+              <span>100% Genuine & Sealed</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-teal-600 font-bold">✓</span>
+              <span>Cash on Delivery Available</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-teal-600 font-bold">✓</span>
+              <span>Safe Storage Guarantee</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-teal-600 font-bold">✓</span>
+              <span>Easy 7-day Exchange</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Tabbed Specifications, Feeding Guidelines & Reviews -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-10 shadow-sm">
+        
+        <!-- Tab Headers -->
+        <div class="flex border-b border-slate-200 overflow-x-auto scroll-touch-x scrollbar-none gap-6 sm:gap-8 mb-8 whitespace-nowrap">
+          <button class="product-tab-btn pb-4 font-bold text-sm text-teal-600 border-b-2 border-teal-600 transition" data-target="tab-desc">
+            Product Description
+          </button>
+          <button class="product-tab-btn pb-4 font-bold text-sm text-slate-400 hover:text-slate-700 transition" data-target="tab-specs">
+            Nutritional Info & Specs
+          </button>
+          <button class="product-tab-btn pb-4 font-bold text-sm text-slate-400 hover:text-slate-700 transition" data-target="tab-shipping">
+            Delivery & Returns
+          </button>
+          <button class="product-tab-btn pb-4 font-bold text-sm text-slate-400 hover:text-slate-700 transition" data-target="tab-reviews" id="reviews-section">
+            Customer Reviews (<span id="tab-review-count">0</span>)
+          </button>
+        </div>
+
+        <!-- Tab 1: Description -->
+        <div id="tab-desc" class="product-tab-content space-y-4">
+          <h3 class="text-base font-extrabold text-slate-900">About This Formula</h3>
+          <div id="product-long-description" class="text-sm text-slate-600 leading-relaxed space-y-4"></div>
+        </div>
+
+        <!-- Tab 2: Specs -->
+        <div id="tab-specs" class="product-tab-content hidden space-y-6">
+          <h3 class="text-base font-extrabold text-slate-900">Specifications & Guaranteed Analysis</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl text-xs sm:text-sm">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between">
+              <span class="text-slate-500 font-medium">Pet Species</span>
+              <span id="spec-pet-type" class="font-bold text-slate-800">General</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between">
+              <span class="text-slate-500 font-medium">Brand</span>
+              <span id="spec-brand" class="font-bold text-slate-800">Authorized Import</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between">
+              <span class="text-slate-500 font-medium">Dietary Specialty</span>
+              <span class="font-bold text-slate-800">Veterinary Approved Nutrition</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between">
+              <span class="text-slate-500 font-medium">Packaging Condition</span>
+              <span class="font-bold text-slate-800">Original Factory Sealed Pack</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Shipping -->
+        <div id="tab-shipping" class="product-tab-content hidden space-y-4 text-sm text-slate-600">
+          <h3 class="text-base font-extrabold text-slate-900">Shipping & Delivery Policies in Bangladesh</h3>
+          <ul class="space-y-2 list-disc list-inside">
+            <li><strong>Dhaka City Delivery:</strong> Standard delivery within 24–48 hours for ৳ 80. Same-day express options available on orders placed before 2 PM.</li>
+            <li><strong>Outside Dhaka (All 64 Districts):</strong> Dispatched via top courier partners within 48–72 hours for ৳ 150 flat delivery fee.</li>
+            <li><strong>Free Delivery:</strong> Orders exceeding ৳ 1,500 qualify for free standard shipping with code <strong class="text-teal-700">FREESHIP80</strong>.</li>
+            <li><strong>7 Days Return Policy:</strong> If a sealed bag arrives punctured or defective, we provide an immediate replacement or full refund.</li>
+          </ul>
+        </div>
+
+        <!-- Tab 4: Reviews -->
+        <div id="tab-reviews" class="product-tab-content hidden space-y-8">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900">Customer Feedback</h3>
+              <p class="text-xs text-slate-500">Real feedback from verified pet parents.</p>
+            </div>
+            <button id="open-review-form-btn" class="px-4 py-2 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700 transition">
+              Write a Review
+            </button>
+          </div>
+
+          <!-- Review Submission Form (Hidden until clicked) -->
+          <form id="product-review-form" class="hidden bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 max-w-xl">
+            <h4 class="font-bold text-sm text-slate-900">Share your experience with this product</h4>
+            
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Your Rating</label>
+              <select id="review-rating-select" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-800 bg-white">
+                <option value="5">⭐⭐⭐⭐⭐ (5/5 Excellent)</option>
+                <option value="4">⭐⭐⭐⭐ (4/5 Very Good)</option>
+                <option value="3">⭐⭐⭐ (3/5 Average)</option>
+                <option value="2">⭐⭐ (2/5 Below Average)</option>
+                <option value="1">⭐ (1/5 Poor)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Review Details</label>
+              <textarea id="review-comment-input" rows="3" placeholder="Tell other pet parents how your pet liked this..." required class="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-teal-500 bg-white"></textarea>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">Submit Review</button>
+              <button type="button" onclick="document.getElementById('product-review-form').classList.add('hidden')" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">Cancel</button>
+            </div>
+          </form>
+
+          <!-- Reviews List -->
+          <div id="product-reviews-list" class="divide-y divide-slate-100">
+            <p class="text-xs text-slate-400 py-4">Loading reviews...</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Related Products -->
+      <div>
+        <div class="flex items-end justify-between mb-6">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">You May Also Like</h2>
+          <a href="shop.html" class="text-xs font-bold text-teal-600 hover:underline">View More</a>
+        </div>
+        <div id="related-products-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6"></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <!-- Product Details Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+      const productSlug = urlParams.get("slug");
+
+      if (!productId && !productSlug) {
+        window.location.href = "shop.html";
+        return;
+      }
+
+      let activeProduct = null;
+      let activeVariant = null;
+      let selectedQuantity = 1;
+
+      const loadingSpinner = document.getElementById("product-loading-spinner");
+      const productContent = document.getElementById("product-content");
+
+      try {
+        const res = productId ? await window.api.getProduct(productId) : await window.api.getProductBySlug(productSlug);
+        if (!res.success || !res.data) {
+          loadingSpinner.innerHTML = `
+            <div class="text-center py-12">
+              <h3 class="text-lg font-bold text-slate-800 mb-2">Product Not Found</h3>
+              <p class="text-xs text-slate-500 mb-4">The pet item you are looking for may have been retired or moved.</p>
+              <a href="shop.html" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Browse Catalog</a>
+            </div>
+          `;
+          return;
+        }
+
+        activeProduct = res.data;
+        renderProductData(activeProduct);
+        loadingSpinner.classList.add("hidden");
+        productContent.classList.remove("hidden");
+
+        // Load reviews and related products
+        loadProductReviews(activeProduct.id);
+        loadRelatedProducts(activeProduct.categoryId || 1);
+
+      } catch (err) {
+        console.error("Product load error:", err);
+        loadingSpinner.innerHTML = `<div class="text-red-500 text-center py-12">Failed to load product details from server.</div>`;
+      }
+
+      function renderProductData(p) {
+        // Document title
+        document.title = `${p.name} - PawHaven BD`;
+
+        // Breadcrumbs
+        const catBreadcrumb = document.getElementById("breadcrumb-category");
+        const nameBreadcrumb = document.getElementById("breadcrumb-product-name");
+        if (catBreadcrumb) {
+          catBreadcrumb.textContent = p.categoryName || "Pet Supplies";
+          catBreadcrumb.href = `shop.html?category=${p.categorySlug || ''}`;
+        }
+        if (nameBreadcrumb) nameBreadcrumb.textContent = p.name;
+
+        // Tags
+        const brandTag = document.getElementById("product-brand-tag");
+        const petTypeTag = document.getElementById("product-pet-type-tag");
+        if (brandTag) brandTag.textContent = p.brandName || "Premium Pet Care";
+        if (petTypeTag) petTypeTag.textContent = p.petTypeName || "All Pets";
+
+        // Title & Description
+        document.getElementById("product-title").textContent = p.name;
+        document.getElementById("product-short-description").textContent = p.shortDescription || p.description || "Formulated with premium balanced nutrients to support optimal pet health and longevity.";
+        document.getElementById("product-long-description").innerHTML = (p.description || p.shortDescription || "High quality nutrition manufactured under strict veterinary quality control standards.").replace(/\n/g, '<br>');
+
+        // Specs
+        const specPet = document.getElementById("spec-pet-type");
+        const specBrand = document.getElementById("spec-brand");
+        if (specPet) specPet.textContent = p.petTypeName || "General";
+        if (specBrand) specBrand.textContent = p.brandName || "Authorized";
+
+        // Ratings & SKU
+        document.getElementById("product-rating-stars").innerHTML = window.renderRatingStars(p.averageRating);
+        document.getElementById("product-review-count").textContent = p.reviewCount || 0;
+        document.getElementById("tab-review-count").textContent = p.reviewCount || 0;
+        document.getElementById("product-sku").textContent = `SKU: ${p.sku || 'PH-' + p.id}`;
+
+        // Image & Gallery
+        const mainImg = document.getElementById("main-product-image");
+        mainImg.src = window.resolveImageUrl(p.primaryImageUrl, p.name);
+
+        const thumbsContainer = document.getElementById("product-thumbnails-container");
+        const allImages = p.images && p.images.length > 0 ? p.images : [{ imageUrl: p.primaryImageUrl }];
+        
+        thumbsContainer.innerHTML = allImages.map((img, idx) => `
+          <button type="button" class="thumb-btn w-16 h-16 rounded-xl border ${idx === 0 ? 'border-teal-500 ring-2 ring-teal-200' : 'border-slate-200'} p-1 bg-slate-50 shrink-0 overflow-hidden flex items-center justify-center transition" data-url="${window.resolveImageUrl(img.imageUrl, p.name)}">
+            <img src="${window.resolveImageUrl(img.imageUrl, p.name)}" alt="Thumbnail" class="max-h-full max-w-full object-contain">
+          </button>
+        `).join("");
+
+        document.querySelectorAll(".thumb-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            mainImg.src = btn.getAttribute("data-url");
+            document.querySelectorAll(".thumb-btn").forEach(b => b.classList.remove("border-teal-500", "ring-2", "ring-teal-200"));
+            btn.classList.add("border-teal-500", "ring-2", "ring-teal-200");
+          });
+        });
+
+        // Badges
+        const badgesContainer = document.getElementById("product-badges-container");
+        let badgesHtml = "";
+        if (p.compareAtPrice && p.compareAtPrice > p.basePrice) {
+          badgesHtml += `<span class="badge-sale px-2.5 py-1 text-[11px] font-extrabold rounded-lg uppercase tracking-wide">-${p.discountPercentage}% OFF</span>`;
+        }
+        if (p.isFeatured) {
+          badgesHtml += `<span class="badge-featured px-2.5 py-1 text-[11px] font-extrabold rounded-lg uppercase tracking-wide">Featured</span>`;
+        }
+        badgesContainer.innerHTML = badgesHtml;
+
+        // Variants
+        const variantsSection = document.getElementById("product-variants-section");
+        const variantsList = document.getElementById("product-variants-list");
+        if (p.variants && p.variants.length > 0) {
+          variantsSection.classList.remove("hidden");
+          activeVariant = p.variants[0];
+
+          variantsList.innerHTML = p.variants.map((v, i) => `
+            <button type="button" class="variant-btn px-3.5 py-2 rounded-xl border text-xs font-bold transition ${i === 0 ? 'border-teal-600 bg-teal-50 text-teal-800 ring-2 ring-teal-200' : 'border-slate-200 text-slate-700 hover:border-slate-300'}" data-index="${i}">
+              ${v.variantName || v.weight || 'Option ' + (i+1)}
+            </button>
+          `).join("");
+
+          document.querySelectorAll(".variant-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+              const idx = parseInt(btn.getAttribute("data-index"));
+              activeVariant = p.variants[idx];
+              document.querySelectorAll(".variant-btn").forEach(b => b.classList.remove("border-teal-600", "bg-teal-50", "text-teal-800", "ring-2", "ring-teal-200"));
+              btn.classList.add("border-teal-600", "bg-teal-50", "text-teal-800", "ring-2", "ring-teal-200");
+              updatePriceDisplay();
+            });
+          });
+        }
+
+        updatePriceDisplay();
+
+        // Wishlist button hook
+        const wishlistBtn = document.getElementById("product-wishlist-toggle-btn");
+        if (wishlistBtn) {
+          wishlistBtn.addEventListener("click", () => window.handleToggleWishlist(p.id));
+        }
+      }
+
+      function updatePriceDisplay() {
+        const price = activeVariant ? activeVariant.price : activeProduct.basePrice;
+        const comparePrice = activeProduct.compareAtPrice;
+        const sku = activeVariant?.sku || activeProduct.sku;
+
+        document.getElementById("product-price").textContent = window.formatPrice(price);
+        document.getElementById("product-sku").textContent = `SKU: ${sku || 'PH-' + activeProduct.id}`;
+
+        const compareEl = document.getElementById("product-compare-price");
+        const discountPill = document.getElementById("product-discount-pill");
+
+        if (comparePrice && comparePrice > price) {
+          compareEl.textContent = window.formatPrice(comparePrice);
+          compareEl.classList.remove("hidden");
+          const pct = Math.round(((comparePrice - price) / comparePrice) * 100);
+          discountPill.textContent = `Save ${pct}%`;
+          discountPill.classList.remove("hidden");
+        } else {
+          compareEl.classList.add("hidden");
+          discountPill.classList.add("hidden");
+        }
+      }
+
+      // Quantity controls
+      const qtyInput = document.getElementById("product-quantity-input");
+      document.getElementById("qty-decrement-btn").addEventListener("click", () => {
+        if (selectedQuantity > 1) {
+          selectedQuantity--;
+          qtyInput.value = selectedQuantity;
+        }
+      });
+      document.getElementById("qty-increment-btn").addEventListener("click", () => {
+        if (selectedQuantity < 99) {
+          selectedQuantity++;
+          qtyInput.value = selectedQuantity;
+        }
+      });
+
+      // Add to cart & Buy now
+      document.getElementById("btn-add-to-cart").addEventListener("click", () => {
+        window.handleAddToCart(activeProduct.id, activeVariant?.id || null, selectedQuantity);
+      });
+
+      document.getElementById("btn-buy-now").addEventListener("click", async () => {
+        await window.handleAddToCart(activeProduct.id, activeVariant?.id || null, selectedQuantity);
+        setTimeout(() => {
+          window.location.href = "checkout.html";
+        }, 400);
+      });
+
+      // Tab Switcher logic
+      document.querySelectorAll(".product-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-target");
+          document.querySelectorAll(".product-tab-btn").forEach(b => {
+            b.classList.remove("text-teal-600", "border-b-2", "border-teal-600");
+            b.classList.add("text-slate-400");
+          });
+          btn.classList.add("text-teal-600", "border-b-2", "border-teal-600");
+          btn.classList.remove("text-slate-400");
+
+          document.querySelectorAll(".product-tab-content").forEach(c => c.classList.add("hidden"));
+          document.getElementById(target).classList.remove("hidden");
+        });
+      });
+
+      // Load Reviews
+      async function loadProductReviews(pId) {
+        const revContainer = document.getElementById("product-reviews-list");
+        try {
+          const res = await window.api.getProductReviews(pId);
+          if (res.success && res.data && res.data.items && res.data.items.length > 0) {
+            revContainer.innerHTML = res.data.items.map(r => `
+              <div class="py-4 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-800 text-sm">${r.userName || 'Pet Parent'}</span>
+                  <span class="text-xs text-slate-400">${new Date(r.createdAt).toLocaleDateString()}</span>
+                </div>
+                <div>${window.renderRatingStars(r.rating)}</div>
+                <p class="text-xs text-slate-600 mt-1">${r.comment || ''}</p>
+              </div>
+            `).join("");
+          } else {
+            revContainer.innerHTML = `<p class="text-xs text-slate-400 py-4">No reviews yet for this product. Be the first to share your thoughts!</p>`;
+          }
+        } catch (e) {
+          revContainer.innerHTML = `<p class="text-xs text-slate-400 py-4">No customer reviews yet.</p>`;
+        }
+      }
+
+      // Review submission form toggle & handler
+      const openRevBtn = document.getElementById("open-review-form-btn");
+      const revForm = document.getElementById("product-review-form");
+      if (openRevBtn && revForm) {
+        openRevBtn.addEventListener("click", () => revForm.classList.toggle("hidden"));
+
+        revForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (!window.AuthManager || !window.AuthManager.isAuthenticated()) {
+            window.showToast("Please sign in to submit a verified product review.", "warning");
+            setTimeout(() => {
+              window.location.href = `login.html?redirect=product.html?id=${activeProduct.id}`;
+            }, 1000);
+            return;
+          }
+
+          const rating = parseInt(document.getElementById("review-rating-select").value);
+          const comment = document.getElementById("review-comment-input").value.trim();
+
+          const res = await window.api.createReview(activeProduct.id, { rating, comment });
+          if (res.success) {
+            window.showToast("Review submitted successfully!", "success");
+            revForm.reset();
+            revForm.classList.add("hidden");
+            loadProductReviews(activeProduct.id);
+          } else {
+            window.showToast(res.message || "Failed to submit review.", "error");
+          }
+        });
+      }
+
+      // Load Related Products
+      async function loadRelatedProducts(catId) {
+        const grid = document.getElementById("related-products-grid");
+        try {
+          const res = await window.api.getProducts({ categoryId: catId, pageSize: 4 });
+          if (res.success && res.data && res.data.items.length > 0) {
+            grid.innerHTML = res.data.items.filter(p => p.id !== activeProduct.id).slice(0, 4).map(p => window.renderProductCard(p)).join("");
+          }
+        } catch (e) {
+          console.warn("Related products failed:", e);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

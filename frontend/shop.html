@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Pet Products - PawHaven BD</title>
+  <meta name="description" content="Browse authentic cat, dog, bird, and rabbit food, litters, healthcare, toys, and grooming products with fast Dhaka shipping.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Breadcrumbs & Catalog Header -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+        <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold">Shop Catalog</span>
+      </nav>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900">All Pet Supplies</h1>
+    </div>
+  </div>
+
+  <!-- Catalog Main Area -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Desktop Sidebar Filters -->
+      <aside class="hidden lg:block bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm sticky top-24">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+          <h2 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
+            <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            Refine Catalog
+          </h2>
+          <button id="clear-all-filters-btn" class="text-xs font-bold text-teal-600 hover:text-teal-800 transition">Reset All</button>
+        </div>
+
+        <form id="shop-filters-form" class="space-y-6">
+          
+          <!-- Pet Type Filter -->
+          <div>
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Filter by Pet</h3>
+            <div class="space-y-2 text-sm text-slate-600">
+              <label class="flex items-center gap-2.5 cursor-pointer hover:text-teal-600">
+                <input type="radio" name="filter-pet-type" value="" checked class="text-teal-600 focus:ring-teal-500 rounded-full">
+                <span>All Pets</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer hover:text-teal-600">
+                <input type="radio" name="filter-pet-type" value="cat" class="text-teal-600 focus:ring-teal-500 rounded-full">
+                <span>Cats 🐱</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer hover:text-teal-600">
+                <input type="radio" name="filter-pet-type" value="dog" class="text-teal-600 focus:ring-teal-500 rounded-full">
+                <span>Dogs 🐶</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer hover:text-teal-600">
+                <input type="radio" name="filter-pet-type" value="bird" class="text-teal-600 focus:ring-teal-500 rounded-full">
+                <span>Birds 🦜</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer hover:text-teal-600">
+                <input type="radio" name="filter-pet-type" value="rabbit" class="text-teal-600 focus:ring-teal-500 rounded-full">
+                <span>Rabbits 🐰</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="pt-4 border-t border-slate-100">
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Price Range (BDT)</h3>
+            <div class="grid grid-cols-2 gap-2 mb-3">
+              <div>
+                <label class="text-[11px] text-slate-400 block mb-1">Min Price</label>
+                <input type="number" id="filter-min-price" placeholder="0" min="0" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-teal-500">
+              </div>
+              <div>
+                <label class="text-[11px] text-slate-400 block mb-1">Max Price</label>
+                <input type="number" id="filter-max-price" placeholder="10000" min="0" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-teal-500">
+              </div>
+            </div>
+          </div>
+
+          <!-- Availability & Deals Checkboxes -->
+          <div class="pt-4 border-t border-slate-100 space-y-2.5">
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Availability & Deals</h3>
+            <label class="flex items-center gap-2.5 cursor-pointer text-sm text-slate-600 hover:text-teal-600">
+              <input type="checkbox" id="filter-in-stock" class="rounded text-teal-600 focus:ring-teal-500">
+              <span>In Stock Only</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer text-sm text-slate-600 hover:text-teal-600">
+              <input type="checkbox" id="filter-on-sale" class="rounded text-teal-600 focus:ring-teal-500">
+              <span>On Sale / Discounted</span>
+            </label>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition shadow-sm">
+            Apply Filters
+          </button>
+        </form>
+      </aside>
+
+      <!-- Main Products Catalog -->
+      <section class="lg:col-span-3 flex flex-col">
+        
+        <!-- Top Toolbar -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 p-4 mb-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <!-- Mobile filter button -->
+            <button id="mobile-filter-open-btn" class="lg:hidden px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition">
+              <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <span>Filters</span>
+            </button>
+            <span id="shop-product-count" class="text-xs font-semibold text-slate-500">Loading catalog...</span>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <label for="shop-sort-select" class="text-xs font-bold text-slate-500 shrink-0">Sort By:</label>
+            <select id="shop-sort-select" class="w-full sm:w-auto px-3 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-800 bg-white focus:outline-none focus:border-teal-500">
+              <option value="newest">Newest Arrivals</option>
+              <option value="popularity">Most Popular</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="shop-products-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 flex-1">
+          <!-- Populated by products.js -->
+        </div>
+
+        <!-- Pagination Bar -->
+        <div id="shop-pagination" class="mt-8"></div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Mobile Filter Modal / Drawer -->
+  <div id="mobile-filter-modal" class="fixed inset-0 z-50 flex hidden">
+    <div id="mobile-filter-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+    <div class="relative ml-auto max-w-xs w-full bg-white h-full shadow-2xl p-6 overflow-y-auto flex flex-col z-10">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+        <h3 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
+          <span>⚙️</span> Filter Catalog
+        </h3>
+        <button id="mobile-filter-close-btn" class="p-2 text-slate-400 hover:text-slate-600 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="flex-1 space-y-5">
+        <!-- Pet Species Options -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2.5">Shop By Species</h4>
+          <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+            <a href="shop.html" class="p-2.5 rounded-xl border border-slate-200 text-slate-700 text-center hover:bg-teal-50 hover:border-teal-400">All Pets</a>
+            <a href="shop.html?petType=cat" class="p-2.5 rounded-xl border border-slate-200 text-slate-700 text-center hover:bg-teal-50 hover:border-teal-400">Cats 🐱</a>
+            <a href="shop.html?petType=dog" class="p-2.5 rounded-xl border border-slate-200 text-slate-700 text-center hover:bg-teal-50 hover:border-teal-400">Dogs 🐶</a>
+            <a href="shop.html?petType=bird" class="p-2.5 rounded-xl border border-slate-200 text-slate-700 text-center hover:bg-teal-50 hover:border-teal-400">Birds 🦜</a>
+            <a href="shop.html?petType=rabbit" class="p-2.5 rounded-xl border border-slate-200 text-slate-700 text-center hover:bg-teal-50 hover:border-teal-400 col-span-2">Rabbits 🐰</a>
+          </div>
+        </div>
+
+        <!-- Quick Deals -->
+        <div class="pt-4 border-t border-slate-100 space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Special Offers</h4>
+          <a href="shop.html?onSaleOnly=true" class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50 text-amber-800 text-xs font-bold border border-amber-200">
+            <span>⚡ Flash Deals & Discounts</span>
+            <span>→</span>
+          </a>
+          <a href="shop.html?isFeatured=true" class="flex items-center justify-between p-2.5 rounded-xl bg-teal-50 text-teal-800 text-xs font-bold border border-teal-200">
+            <span>🌟 Featured Selections</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 space-y-2 mt-auto">
+        <a href="shop.html" class="w-full block py-3 px-4 text-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs min-h-[44px]">
+          Reset All Filters
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/products.js"></script>
+
+  <script>
+    // Mobile filter drawer controls
+    const mOpenBtn = document.getElementById("mobile-filter-open-btn");
+    const mModal = document.getElementById("mobile-filter-modal");
+    const mCloseBtn = document.getElementById("mobile-filter-close-btn");
+    const mBackdrop = document.getElementById("mobile-filter-backdrop");
+
+    function openMobileFilter() {
+      if (mModal) {
+        mModal.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      }
+    }
+
+    function closeMobileFilter() {
+      if (mModal) {
+        mModal.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      }
+    }
+
+    if (mOpenBtn && mModal) {
+      mOpenBtn.addEventListener("click", openMobileFilter);
+    }
+    if (mCloseBtn && mModal) {
+      mCloseBtn.addEventListener("click", closeMobileFilter);
+    }
+    if (mBackdrop && mModal) {
+      mBackdrop.addEventListener("click", closeMobileFilter);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Catalog - PawHaven BD</title>
+  <meta name="description" content="Explore pet nutrition and supplies sorted by specialized category at PawHaven BD.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Category Banner Header -->
+  <div class="bg-gradient-to-r from-teal-900 via-teal-800 to-slate-900 text-white py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-teal-200 mb-3">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <a href="shop.html" class="hover:underline">Categories</a>
+        <span>/</span>
+        <span id="breadcrumb-category-name" class="text-white font-bold">Category</span>
+      </nav>
+
+      <h1 id="category-hero-title" class="text-2xl sm:text-4xl font-black mb-2">Pet Products</h1>
+      <p id="category-hero-desc" class="text-sm text-teal-100 max-w-2xl leading-relaxed">
+        Specially selected formulas and supplies tested for quality and nutrition.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+    
+    <!-- Subcategories Pill List -->
+    <div id="subcategories-container" class="hidden">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Subcategories</h3>
+      <div id="subcategories-pills" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <!-- Products Toolbar & Grid -->
+    <div>
+      <div class="flex items-center justify-between mb-6">
+        <h2 id="category-products-count" class="text-sm font-bold text-slate-600">Showing products...</h2>
+        <a href="shop.html" class="text-xs font-bold text-teal-600 hover:underline">View All in Shop →</a>
+      </div>
+
+      <div id="category-products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Populated via API -->
+        <div class="col-span-full py-16 text-center text-slate-400">Loading category products...</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catSlug = urlParams.get("slug");
+      const catId = urlParams.get("id");
+
+      let category = null;
+
+      try {
+        const catRes = await window.api.getCategories();
+        if (catRes.success && catRes.data) {
+          if (catSlug) {
+            category = catRes.data.find(c => c.slug === catSlug);
+          } else if (catId) {
+            category = catRes.data.find(c => c.id == catId);
+          }
+        }
+
+        if (category) {
+          document.title = `${category.name} - PawHaven BD`;
+          document.getElementById("breadcrumb-category-name").textContent = category.name;
+          document.getElementById("category-hero-title").textContent = category.name;
+          document.getElementById("category-hero-desc").textContent = category.description || `Browse authentic ${category.name} products with guaranteed safety and fresh stock.`;
+
+          // Subcategories
+          if (category.children && category.children.length > 0) {
+            const subWrap = document.getElementById("subcategories-container");
+            const pillsWrap = document.getElementById("subcategories-pills");
+            subWrap.classList.remove("hidden");
+            pillsWrap.innerHTML = category.children.map(sub => `
+              <a href="category.html?slug=${sub.slug}" class="px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:border-teal-500 hover:text-teal-700 font-bold text-xs transition shadow-sm">
+                ${sub.name}
+              </a>
+            `).join("");
+          }
+        }
+
+        // Load Products
+        const prodParams = { pageSize: 16 };
+        if (catSlug) prodParams.categorySlug = catSlug;
+        else if (catId) prodParams.categoryId = catId;
+
+        const pRes = await window.api.getProducts(prodParams);
+        const grid = document.getElementById("category-products-grid");
+        const count = document.getElementById("category-products-count");
+
+        if (pRes.success && pRes.data && pRes.data.items.length > 0) {
+          count.textContent = `Showing ${pRes.data.items.length} of ${pRes.data.totalCount} items`;
+          grid.innerHTML = pRes.data.items.map(p => window.renderProductCard(p)).join("");
+        } else {
+          count.textContent = "0 items found";
+          grid.innerHTML = `
+            <div class="col-span-full py-16 text-center">
+              <p class="text-sm text-slate-500 mb-4">No products currently found in this category.</p>
+              <a href="shop.html" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs">Browse Shop</a>
+            </div>
+          `;
+        }
+      } catch (err) {
+        console.error("Category page error:", err);
+      }
+    });
+  </script>
+</body>
+</html>

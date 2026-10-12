@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawHaven BD - Premium Pet Food, Treats, Litter & Supplies in Bangladesh</title>
+  <meta name="description" content="Shop 100% authentic cat food, dog food, bird seed, rabbit hay, litter, accessories, and pet healthcare supplies in Bangladesh. Same-day delivery in Dhaka.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder (Injected dynamically by layout.js) -->
+  <header id="site-header"></header>
+
+  <!-- Main Content -->
+  <main class="flex-1">
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white overflow-hidden py-12 md:py-20">
+      <!-- Background subtle paw decoration -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <circle cx="20" cy="20" r="15" fill="currentColor"/>
+          <circle cx="80" cy="70" r="25" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Copy -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-300 text-xs font-bold tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+              Bangladesh's Premier Pet Wellness Destination
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+              Everything Your Pet Needs, <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-200 to-amber-300">Delivered With Care.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              100% authentic nutrition, veterinary diets, grooming essentials, odor-free litters, and playful accessories for cats, dogs, birds, and rabbits.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <a href="shop.html" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-600 text-slate-950 font-extrabold text-sm transition shadow-lg shadow-teal-500/25 flex items-center justify-center gap-2 group">
+                <span>Shop All Products</span>
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="shop.html?onSaleOnly=true" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-white font-bold text-sm transition flex items-center justify-center gap-2">
+                <span class="text-amber-400">⚡</span>
+                <span>View Flash Deals</span>
+              </a>
+            </div>
+
+            <!-- Quick Trust Badges in Hero -->
+            <div class="pt-4 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-left">
+              <div>
+                <p class="text-lg font-extrabold text-white">100%</p>
+                <p class="text-xs text-slate-400">Authentic Imports</p>
+              </div>
+              <div>
+                <p class="text-lg font-extrabold text-teal-300">Same-Day</p>
+                <p class="text-xs text-slate-400">Inside Dhaka</p>
+              </div>
+              <div>
+                <p class="text-lg font-extrabold text-amber-400">2,500+</p>
+                <p class="text-xs text-slate-400">Happy Pet Parents</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Promo Card / Quick Pet Selector -->
+          <div class="lg:col-span-5">
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Quick Shop</span>
+                <span class="text-xs text-slate-300 bg-white/10 px-2.5 py-1 rounded-full">Select Pet</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3.5">
+                <a href="shop.html?petType=cat" class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/10 hover:bg-teal-500/20 border border-white/10 hover:border-teal-400/50 transition group">
+                  <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🐱</span>
+                  <span class="font-extrabold text-white text-sm">Cats</span>
+                  <span class="text-[11px] text-teal-200">Food, Litter, Toys</span>
+                </a>
+
+                <a href="shop.html?petType=dog" class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/10 hover:bg-teal-500/20 border border-white/10 hover:border-teal-400/50 transition group">
+                  <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🐶</span>
+                  <span class="font-extrabold text-white text-sm">Dogs</span>
+                  <span class="text-[11px] text-teal-200">Kibble, Chews, Care</span>
+                </a>
+
+                <a href="shop.html?petType=bird" class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/10 hover:bg-teal-500/20 border border-white/10 hover:border-teal-400/50 transition group">
+                  <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🦜</span>
+                  <span class="font-extrabold text-white text-sm">Birds</span>
+                  <span class="text-[11px] text-teal-200">Seeds, Cages, Treats</span>
+                </a>
+
+                <a href="shop.html?petType=rabbit" class="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/10 hover:bg-teal-500/20 border border-white/10 hover:border-teal-400/50 transition group">
+                  <span class="text-3xl mb-2 group-hover:scale-110 transition-transform">🐰</span>
+                  <span class="font-extrabold text-white text-sm">Rabbits</span>
+                  <span class="text-[11px] text-teal-200">Timothy Hay, Pellets</span>
+                </a>
+              </div>
+
+              <!-- Promo Ribbon inside Card -->
+              <div class="mt-6 p-3.5 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-amber-400 text-lg">🎁</span>
+                  <div>
+                    <p class="text-xs font-bold text-white leading-tight">First Order Discount</p>
+                    <p class="text-[11px] text-amber-200">Get 10% off with coupon: <strong class="text-white">PAW10</strong></p>
+                  </div>
+                </div>
+                <a href="shop.html" class="px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs transition shrink-0">Use Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Propositions Strip -->
+    <section class="border-b border-slate-200 bg-white py-6">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">100% Genuine Brands</h4>
+              <p class="text-xs text-slate-500">Directly sourced imports only</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Fast Dhaka Dispatch</h4>
+              <p class="text-xs text-slate-500">Same-day delivery available</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Cash on Delivery</h4>
+              <p class="text-xs text-slate-500">Pay when order arrives safely</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm">Pet Care Advisory</h4>
+              <p class="text-xs text-slate-500">+880 1711-000001 helpline</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop By Pet Section -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block mb-1">Tailored By Species</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Shop By Pet</h2>
+        </div>
+        <a href="shop.html" class="text-sm font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1 transition">
+          View All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+        <!-- Cat -->
+        <a href="shop.html?petType=cat" class="bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-teal-500/50 hover:shadow-lg transition text-center group flex flex-col items-center">
+          <div class="w-16 h-16 rounded-2xl bg-amber-50 group-hover:bg-amber-100 flex items-center justify-center text-3xl mb-3 transition">
+            🐱
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">Cats</h3>
+          <p class="text-xs text-slate-400 mt-0.5">Dry, Wet, Litter, Toys</p>
+        </a>
+
+        <!-- Dog -->
+        <a href="shop.html?petType=dog" class="bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-teal-500/50 hover:shadow-lg transition text-center group flex flex-col items-center">
+          <div class="w-16 h-16 rounded-2xl bg-teal-50 group-hover:bg-teal-100 flex items-center justify-center text-3xl mb-3 transition">
+            🐶
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">Dogs</h3>
+          <p class="text-xs text-slate-400 mt-0.5">Kibbles, Leashes, Chews</p>
+        </a>
+
+        <!-- Bird -->
+        <a href="shop.html?petType=bird" class="bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-teal-500/50 hover:shadow-lg transition text-center group flex flex-col items-center">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-50 group-hover:bg-emerald-100 flex items-center justify-center text-3xl mb-3 transition">
+            🦜
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">Birds</h3>
+          <p class="text-xs text-slate-400 mt-0.5">Millet, Cages, Vitamins</p>
+        </a>
+
+        <!-- Rabbit -->
+        <a href="shop.html?petType=rabbit" class="bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-teal-500/50 hover:shadow-lg transition text-center group flex flex-col items-center">
+          <div class="w-16 h-16 rounded-2xl bg-purple-50 group-hover:bg-purple-100 flex items-center justify-center text-3xl mb-3 transition">
+            🐰
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">Rabbits</h3>
+          <p class="text-xs text-slate-400 mt-0.5">Alfalfa, Hay, Accessories</p>
+        </a>
+
+        <!-- Small Pets -->
+        <a href="shop.html?petType=small-pet" class="col-span-2 sm:col-span-4 lg:col-span-1 bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-teal-500/50 hover:shadow-lg transition text-center group flex flex-col items-center">
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 group-hover:bg-rose-100 flex items-center justify-center text-3xl mb-3 transition">
+            🐹
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">Small Pets</h3>
+          <p class="text-xs text-slate-400 mt-0.5">Hamsters & Guinea Pigs</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Flash Deals Section with Live Countdown -->
+    <section class="py-12 bg-slate-900 text-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider">⚡ Flash Deals</span>
+              <span class="text-xs text-slate-400">Save up to 30% today</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Limited-Time Special Offers</h2>
+          </div>
+
+          <!-- Countdown Timer Widget -->
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400 font-bold uppercase mr-1">Deal Ends In:</span>
+            <div class="flex items-center gap-1.5 text-center">
+              <span id="countdown-hours" class="w-9 h-9 rounded-lg bg-slate-800 text-amber-400 font-extrabold text-sm flex items-center justify-center border border-slate-700">08</span>
+              <span class="text-slate-500 font-bold">:</span>
+              <span id="countdown-mins" class="w-9 h-9 rounded-lg bg-slate-800 text-amber-400 font-extrabold text-sm flex items-center justify-center border border-slate-700">42</span>
+              <span class="text-slate-500 font-bold">:</span>
+              <span id="countdown-secs" class="w-9 h-9 rounded-lg bg-slate-800 text-amber-400 font-extrabold text-sm flex items-center justify-center border border-slate-700">19</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flash Deals Products Container -->
+        <div id="home-flash-deals-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Loaded dynamically via JavaScript -->
+          <div class="col-span-full py-12 text-center text-slate-400">Loading flash deals...</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block mb-1">Handpicked Selections</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Featured Products</h2>
+        </div>
+        <a href="shop.html?isFeatured=true" class="text-sm font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1 transition">
+          View All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div id="home-featured-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Loaded dynamically via JavaScript -->
+        <div class="col-span-full py-12 text-center text-slate-400">Loading featured products...</div>
+      </div>
+    </section>
+
+    <!-- Promotional Mid-Banner -->
+    <section class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Banner 1: Cat Nutrition -->
+        <div class="rounded-3xl bg-gradient-to-r from-teal-900 to-teal-800 text-white p-8 sm:p-10 relative overflow-hidden flex flex-col justify-between shadow-sm">
+          <div class="relative z-10 max-w-sm">
+            <span class="px-2.5 py-1 rounded-md bg-teal-500/30 text-teal-200 text-xs font-bold uppercase tracking-wider mb-3 inline-block">Veterinary Approved</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">Super Premium Cat Nutrition</h3>
+            <p class="text-sm text-teal-100 mb-6">Specially formulated for healthy coat, digestive balance & urinary health.</p>
+            <a href="shop.html?category=cat-dry-food" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-teal-900 font-extrabold text-xs hover:bg-teal-50 transition">
+              Explore Cat Food
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+          <div class="absolute right-4 bottom-4 text-7xl opacity-20 pointer-events-none">🐾</div>
+        </div>
+
+        <!-- Banner 2: Dog Health & Dental -->
+        <div class="rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 sm:p-10 relative overflow-hidden flex flex-col justify-between shadow-sm">
+          <div class="relative z-10 max-w-sm">
+            <span class="px-2.5 py-1 rounded-md bg-amber-500/30 text-amber-200 text-xs font-bold uppercase tracking-wider mb-3 inline-block">Daily Dental Care</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">Chews & Dental Care Treats</h3>
+            <p class="text-sm text-slate-300 mb-6">Combat plaque and freshen breath with safe, natural dog treats.</p>
+            <a href="shop.html?category=dog-treats" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs hover:bg-amber-300 transition">
+              Explore Treats
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+          <div class="absolute right-4 bottom-4 text-7xl opacity-20 pointer-events-none">🦴</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block mb-1">Customer Favorites</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Best Selling Pet Supplies</h2>
+        </div>
+        <a href="shop.html?sortBy=popularity" class="text-sm font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1 transition">
+          View All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div id="home-bestsellers-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Loaded dynamically via JavaScript -->
+        <div class="col-span-full py-12 text-center text-slate-400">Loading best sellers...</div>
+      </div>
+    </section>
+
+    <!-- Brands Carousel Section -->
+    <section class="py-12 bg-white border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block mb-1">Authorized Distribution</span>
+          <h2 class="text-2xl font-extrabold text-slate-900">Trusted Global Brands</h2>
+          <p class="text-xs text-slate-500 mt-1">We partner directly with authorized importers to guarantee product authenticity.</p>
+        </div>
+
+        <div id="home-brands-grid" class="grid grid-cols-3 sm:grid-cols-6 gap-4 items-center">
+          <!-- Loaded dynamically from API -->
+          <div class="col-span-full py-6 text-center text-slate-400 text-xs">Loading brands...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pet Care Blog Preview Section -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold text-teal-600 uppercase tracking-widest block mb-1">Expert Advice</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Pet Wellness & Nutrition Guides</h2>
+        </div>
+        <a href="blog.html" class="text-sm font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1 transition">
+          Read All Articles <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Guide 1 -->
+        <article class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+          <div class="aspect-video bg-teal-50 flex items-center justify-center text-4xl">🐱</div>
+          <div class="p-6 flex flex-col flex-1">
+            <span class="text-xs font-bold text-teal-600 uppercase tracking-wider mb-2">Cat Nutrition</span>
+            <h3 class="font-extrabold text-slate-900 text-base leading-snug mb-2 hover:text-teal-600 transition">
+              <a href="blog-details.html?id=1">Switching Your Cat's Diet: How to Transition Smoothly Without Upset Stomachs</a>
+            </h3>
+            <p class="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
+              Step-by-step guidance on changing kibble or introducing wet food gradually over 7 to 10 days.
+            </p>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>Dr. R. Ahmed (DVM)</span>
+              <span>4 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Guide 2 -->
+        <article class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+          <div class="aspect-video bg-amber-50 flex items-center justify-center text-4xl">🐶</div>
+          <div class="p-6 flex flex-col flex-1">
+            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-2">Dog Care</span>
+            <h3 class="font-extrabold text-slate-900 text-base leading-snug mb-2 hover:text-teal-600 transition">
+              <a href="blog-details.html?id=2">Summer Hydration: Keeping Your Dog Cool and Safe in Bangladesh's Heat</a>
+            </h3>
+            <p class="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
+              Essential tips on heat stroke prevention, fresh water habits, and electrolyte support for tropical climates.
+            </p>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>PawHaven Care Team</span>
+              <span>5 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Guide 3 -->
+        <article class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+          <div class="aspect-video bg-emerald-50 flex items-center justify-center text-4xl">🐰</div>
+          <div class="p-6 flex flex-col flex-1">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Rabbit Health</span>
+            <h3 class="font-extrabold text-slate-900 text-base leading-snug mb-2 hover:text-teal-600 transition">
+              <a href="blog-details.html?id=3">Why Timothy Hay is Non-Negotiable for Your Rabbit's Dental & Gut Health</a>
+            </h3>
+            <p class="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
+              Why high-fiber forage must make up 80% of your rabbit's daily diet and prevent gastrointestinal stasis.
+            </p>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>PawHaven Nutritionists</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter & Advisory Subscription -->
+    <section class="py-12 bg-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-2xl mb-2 inline-block">🐾</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">Join the PawHaven Family</h2>
+        <p class="text-sm text-slate-400 max-w-md mx-auto mb-6">
+          Subscribe to receive exclusive monthly discounts, vaccine reminder alerts, and veterinary nutrition tips directly in your inbox.
+        </p>
+
+        <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto">
+          <input 
+            type="email" 
+            id="newsletter-email"
+            placeholder="Enter your email address..." 
+            required
+            class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-teal-500 transition"
+          />
+          <button 
+            type="submit" 
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold text-sm transition shrink-0"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p class="text-[11px] text-slate-500 mt-3">We respect your privacy. Unsubscribe at any time with one click.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Placeholder (Injected dynamically by layout.js) -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <!-- Index Specific Dynamic Data Loader -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Simple Countdown Timer for Flash Deals
+      let totalSeconds = 8 * 3600 + 42 * 60 + 19;
+      const hEl = document.getElementById("countdown-hours");
+      const mEl = document.getElementById("countdown-mins");
+      const sEl = document.getElementById("countdown-secs");
+
+      setInterval(() => {
+        if (totalSeconds > 0) totalSeconds--;
+        const hours = Math.floor(totalSeconds / 3600);
+        const mins = Math.floor((totalSeconds % 3600) / 60);
+        const secs = totalSeconds % 60;
+        if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+        if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+        if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+      }, 1000);
+
+      // 2. Load Flash Deals from API
+      const flashContainer = document.getElementById("home-flash-deals-grid");
+      try {
+        const res = await window.api.getProducts({ onSaleOnly: true, pageSize: 4 });
+        if (res.success && res.data && res.data.items.length > 0) {
+          flashContainer.innerHTML = res.data.items.map(p => window.renderProductCard(p)).join("");
+        } else {
+          // Fallback if no specific flash sale products flagged
+          const anyRes = await window.api.getProducts({ pageSize: 4 });
+          if (anyRes.success && anyRes.data?.items?.length > 0) {
+            flashContainer.innerHTML = anyRes.data.items.map(p => window.renderProductCard(p)).join("");
+          }
+        }
+      } catch (e) {
+        console.warn("Flash deals failed:", e);
+      }
+
+      // 3. Load Featured Products from API
+      const featuredContainer = document.getElementById("home-featured-grid");
+      try {
+        const res = await window.api.getProducts({ isFeatured: true, pageSize: 8 });
+        if (res.success && res.data && res.data.items.length > 0) {
+          featuredContainer.innerHTML = res.data.items.map(p => window.renderProductCard(p)).join("");
+        } else {
+          const anyRes = await window.api.getProducts({ pageSize: 8 });
+          if (anyRes.success && anyRes.data?.items?.length > 0) {
+            featuredContainer.innerHTML = anyRes.data.items.map(p => window.renderProductCard(p)).join("");
+          }
+        }
+      } catch (e) {
+        console.warn("Featured products failed:", e);
+      }
+
+      // 4. Load Best Sellers from API
+      const bestSellersContainer = document.getElementById("home-bestsellers-grid");
+      try {
+        const res = await window.api.getProducts({ sortBy: "popularity", pageSize: 8 });
+        if (res.success && res.data && res.data.items.length > 0) {
+          bestSellersContainer.innerHTML = res.data.items.map(p => window.renderProductCard(p)).join("");
+        } else {
+          const anyRes = await window.api.getProducts({ pageSize: 8 });
+          if (anyRes.success && anyRes.data?.items?.length > 0) {
+            bestSellersContainer.innerHTML = anyRes.data.items.map(p => window.renderProductCard(p)).join("");
+          }
+        }
+      } catch (e) {
+        console.warn("Best sellers failed:", e);
+      }
+
+      // 5. Load Brands
+      const brandsContainer = document.getElementById("home-brands-grid");
+      try {
+        const res = await window.api.getBrands();
+        if (res.success && res.data && res.data.length > 0) {
+          brandsContainer.innerHTML = res.data.slice(0, 6).map(b => `
+            <a href="shop.html?brand=${b.slug}" class="p-4 rounded-xl border border-slate-100 hover:border-teal-500/50 bg-slate-50 hover:bg-white text-center transition group shadow-sm">
+              <span class="font-extrabold text-slate-800 text-sm group-hover:text-teal-600 block transition">${b.name}</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">View Catalog</span>
+            </a>
+          `).join("");
+        }
+      } catch (e) {
+        console.warn("Brands failed:", e);
+      }
+
+      // 6. Newsletter form handler
+      const nlForm = document.getElementById("newsletter-form");
+      if (nlForm) {
+        nlForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          window.showToast("Thank you for joining PawHaven BD!", "success");
+          nlForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

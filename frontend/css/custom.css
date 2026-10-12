@@ -1,0 +1,229 @@
+/* ==========================================================================
+   PawHaven BD - Custom Styles & Component Enhancements
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  
+  /* Brand Color Palette */
+  --color-primary: #0D9488;       /* Warm Teal */
+  --color-primary-dark: #0F766E;  /* Deep Teal */
+  --color-primary-light: #CCFBF1; /* Pale Mint */
+  --color-accent: #F59E0B;        /* Honey Amber / Warm Gold */
+  --color-accent-dark: #D97706;
+  --color-dark: #0F172A;          /* Slate 900 */
+  --color-gray-100: #F8FAFC;
+  --color-gray-200: #F1F5F9;
+  --color-gray-300: #E2E8F0;
+  --color-gray-500: #64748B;
+  --color-danger: #EF4444;
+  --color-success: #10B981;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #1E293B;
+  background-color: #F8FAFC;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Typography Enhancements */
+.font-display {
+  font-family: var(--font-serif);
+}
+
+/* Skeleton Loading Shimmer */
+.skeleton {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 37%, #F1F5F9 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* Toast Notifications Container */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+  width: calc(100% - 48px);
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+  border-left: 4px solid var(--color-primary);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  opacity: 0;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast.toast-success {
+  border-left-color: var(--color-success);
+}
+.toast.toast-error {
+  border-left-color: var(--color-danger);
+}
+.toast.toast-warning {
+  border-left-color: var(--color-accent);
+}
+
+/* Smooth Product Card Image Zoom */
+.product-card-image-wrap {
+  overflow: hidden;
+}
+.product-card-image-wrap img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover .product-card-image-wrap img {
+  transform: scale(1.06);
+}
+
+/* Star Rating Display */
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #F59E0B;
+}
+
+/* Subtle Badges */
+.badge-sale {
+  background-color: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FEE2E2;
+}
+
+.badge-featured {
+  background-color: #F0FDF4;
+  color: #16A34A;
+  border: 1px solid #DCFCE7;
+}
+
+.badge-low-stock {
+  background-color: #FFFBEB;
+  color: #D97706;
+  border: 1px solid #FEF3C7;
+}
+
+/* Modal and Drawer Backdrop */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.25s ease;
+}
+
+/* Pulse Animation for Live Deal Indicators */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+/* Form inputs focus state */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* ==========================================================================
+   Mobile-First Smartphone Ergonomics & Touch Enhancements
+   ========================================================================== */
+
+/* Prevent iOS Safari 16px auto-zoom on form inputs */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Fast tap response & eliminate 300ms tap delay */
+button, a, input, select, textarea, label {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Horizontal Swipe Ribbons with Momentum Touch */
+.scroll-touch-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.scroll-touch-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe Area Inset Support for Modern Smartphones */
+#mobile-bottom-nav {
+  padding-bottom: max(0.375rem, env(safe-area-inset-bottom));
+}
+
+body {
+  padding-bottom: 4rem; /* Safe padding for sticky bottom navigation on mobile */
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* Mobile Drawer Slide Transition */
+#mobile-drawer > div:last-child {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+

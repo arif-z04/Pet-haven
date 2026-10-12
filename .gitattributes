@@ -1,0 +1,45 @@
+# ==============================================================================
+# .gitattributes for PawHaven BD
+# ==============================================================================
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Linux / Unix shell scripts and configurations (must keep LF)
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows command batch files (must keep CRLF)
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Source Code
+*.cs text diff=csharp eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.py text diff=python eol=lf
+*.md text eol=lf
+*.xml text eol=lf
+*.csproj text eol=lf
+*.sln text eol=crlf
+*.http text eol=lf
+
+# Static Media & Binary Files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary

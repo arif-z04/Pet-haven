@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Account Dashboard - PawHaven BD</title>
+  <meta name="description" content="Manage your pet profiles, view past orders, track deliveries, and manage shipping addresses at PawHaven BD.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Breadcrumbs & Header -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+        <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold">My Account</span>
+      </nav>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Pet Parent Dashboard</h1>
+    </div>
+  </div>
+
+  <!-- Account Dashboard Layout -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Sidebar: Profile Card & Navigation (4 cols) -->
+      <aside class="lg:col-span-4 space-y-6">
+        
+        <!-- Profile Overview Card -->
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm text-center">
+          <div class="w-20 h-20 rounded-full bg-teal-600 text-white font-extrabold text-2xl flex items-center justify-center mx-auto mb-4 shadow-md shadow-teal-500/25">
+            <span id="profile-initial">U</span>
+          </div>
+          <h2 id="profile-name" class="text-lg font-extrabold text-slate-900 leading-tight">Customer</h2>
+          <p id="profile-email" class="text-xs text-slate-400 mt-0.5">customer@pawhaven.bd</p>
+          <p id="profile-phone" class="text-xs text-teal-600 font-bold mt-1">+880 1700-000000</p>
+
+          <div class="mt-6 pt-6 border-t border-slate-100 flex justify-center gap-2">
+            <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">Verified Member</span>
+            <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">Standard Rewards</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Navigation Menu -->
+        <nav class="bg-white rounded-3xl border border-slate-200/80 p-4 shadow-sm space-y-1">
+          <a href="account.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-teal-50 text-teal-700 font-bold text-xs transition">
+            <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Dashboard Overview</span>
+          </a>
+
+          <a href="orders.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span>My Order History</span>
+          </a>
+
+          <a href="my-pets.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>My Pet Profiles</span>
+          </a>
+
+          <a href="wishlist.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-600 hover:bg-slate-50 font-bold text-xs transition">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            <span>Saved Wishlist</span>
+          </a>
+
+          <div class="pt-2 border-t border-slate-100">
+            <button onclick="window.AuthManager.logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-red-600 hover:bg-red-50 font-bold text-xs transition text-left">
+              <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </nav>
+
+      </aside>
+
+      <!-- Right Main Content Area (8 cols) -->
+      <section class="lg:col-span-8 space-y-6">
+        
+        <!-- Quick Stats Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Fast Reorder</span>
+              <span class="text-lg">📦</span>
+            </div>
+            <a href="orders.html" class="text-teal-600 font-extrabold text-sm hover:underline block">Track Shipments →</a>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pet Nutrition</span>
+              <span class="text-lg">🐾</span>
+            </div>
+            <a href="my-pets.html" class="text-teal-600 font-extrabold text-sm hover:underline block">Manage Profiles →</a>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Saved For Later</span>
+              <span class="text-lg">❤️</span>
+            </div>
+            <a href="wishlist.html" class="text-teal-600 font-extrabold text-sm hover:underline block">View Wishlist →</a>
+          </div>
+        </div>
+
+        <!-- Recent Orders Card -->
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900">Recent Orders</h3>
+              <p class="text-xs text-slate-400">Your latest purchases and tracking details</p>
+            </div>
+            <a href="orders.html" class="text-xs font-bold text-teal-600 hover:underline">View All Orders</a>
+          </div>
+
+          <div id="account-recent-orders">
+            <!-- Populated dynamically by account.js -->
+          </div>
+        </div>
+
+        <!-- Notifications Card -->
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+          <div class="pb-4 border-b border-slate-100 mb-4">
+            <h3 class="text-base font-extrabold text-slate-900">Account Notifications</h3>
+            <p class="text-xs text-slate-400">Order updates, shipping dispatches and offers</p>
+          </div>
+
+          <div id="account-notifications-list" class="space-y-3">
+            <!-- Populated dynamically by account.js -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

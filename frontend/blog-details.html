@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Care Guide - PawHaven BD</title>
+  <meta name="description" content="In-depth veterinary guidelines on pet nutrition, digestion, and daily wellbeing from PawHaven BD experts.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Breadcrumbs & Header -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+        <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+        <span>/</span>
+        <a href="blog.html" class="hover:text-teal-600 transition">Pet Care Guides</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold truncate">Article</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Article Body -->
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8">
+    
+    <article class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-10 shadow-sm space-y-6">
+      
+      <div class="space-y-3 pb-6 border-b border-slate-100">
+        <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold uppercase tracking-wider inline-block">Veterinary Nutrition</span>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+          Switching Your Cat's Diet: How to Transition Smoothly Without Upset Stomachs
+        </h1>
+        <div class="flex items-center gap-4 text-xs text-slate-400 pt-2">
+          <span>By <strong>Dr. R. Ahmed (DVM)</strong></span>
+          <span>•</span>
+          <span>4 min read</span>
+          <span>•</span>
+          <span>Verified Veterinary Review</span>
+        </div>
+      </div>
+
+      <!-- Main Article Text -->
+      <div class="prose max-w-none text-sm sm:text-base text-slate-600 leading-relaxed space-y-5">
+        <p>
+          Whether you are upgrading your feline companion to a super-premium formula like Royal Canin or Reflex, or shifting from kitten food to an adult indoor maintenance diet, transitioning food requires patience. Feline digestive tracts are uniquely sensitive, and the beneficial bacteria in a cat's gut need time to adapt to new protein and fiber profiles.
+        </p>
+
+        <h3 class="text-lg font-extrabold text-slate-900">Why Sudden Food Changes Cause Issues</h3>
+        <p>
+          Unlike humans who thrive on dietary variety, cats produce specific digestive enzymes tailored to their habitual food. If a new diet is introduced overnight, unhydrolyzed proteins and altered carbohydrate ratios can lead to acute vomiting, diarrhea, gas, or food refusal.
+        </p>
+
+        <!-- Callout Box -->
+        <div class="p-5 rounded-2xl bg-teal-50 border border-teal-200 text-teal-900 space-y-2">
+          <h4 class="font-bold text-sm">💡 The Golden Rule: The 7-Day Transition Schedule</h4>
+          <ul class="text-xs sm:text-sm space-y-1 list-disc list-inside">
+            <li><strong>Days 1–2:</strong> 75% old food mixed with 25% new food.</li>
+            <li><strong>Days 3–4:</strong> 50% old food mixed with 50% new food.</li>
+            <li><strong>Days 5–6:</strong> 25% old food mixed with 75% new food.</li>
+            <li><strong>Day 7+:</strong> 100% new food!</li>
+          </ul>
+        </div>
+
+        <h3 class="text-lg font-extrabold text-slate-900">Watch for Hydration & Stool Consistency</h3>
+        <p>
+          During the transition week, monitor your cat's litter box habits closely. Firm, formed stools indicate that the microbiome is adjusting smoothly. If mild softness occurs, maintain the current ratio for an extra two days before increasing the proportion of the new diet.
+        </p>
+        <p>
+          Always ensure fresh, clean water is readily available in multiple bowls or a pet water fountain, especially when transitioning dry kibble.
+        </p>
+      </div>
+
+      <!-- Callout: Related Products -->
+      <div class="mt-8 pt-6 border-t border-slate-100 bg-slate-50 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-sm">Looking for premium feline nutrition?</h4>
+          <p class="text-xs text-slate-500">Explore authentic cat foods with sealed packaging and fast delivery.</p>
+        </div>
+        <a href="shop.html?petType=cat" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition shrink-0">
+          Explore Cat Food Catalog
+        </a>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

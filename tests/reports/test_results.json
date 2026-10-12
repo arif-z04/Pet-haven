@@ -1,0 +1,239 @@
+{
+  "timestamp": "2026-10-12 18:02:55",
+  "total": 33,
+  "passed": 33,
+  "failed": 0,
+  "results": [
+    {
+      "domain": "Domain 1: Auth",
+      "tc_id": "TC-1.1",
+      "name": "1-Click Demo Fill Buttons in login.html",
+      "status": "PASS",
+      "details": "Demo fill credentials and function verified in login.html"
+    },
+    {
+      "domain": "Domain 1: Auth",
+      "tc_id": "TC-1.2",
+      "name": "Customer Login & JWT Token Issuance",
+      "status": "PASS",
+      "details": "HTTP 200, JWT issued in 730ms, Role: customer"
+    },
+    {
+      "domain": "Domain 1: Auth",
+      "tc_id": "TC-1.3",
+      "name": "New Account Registration & Session Start",
+      "status": "PASS",
+      "details": "Created user test_1791806573_70cdae@pawhaven.bd in 553ms with JWT"
+    },
+    {
+      "domain": "Domain 1: Auth",
+      "tc_id": "TC-1.4",
+      "name": "Sign Out Flow & Session Purge",
+      "status": "PASS",
+      "details": "Logout endpoint and client session clearance with drawer synchronization verified"
+    },
+    {
+      "domain": "Domain 2: Search",
+      "tc_id": "TC-2.1",
+      "name": "Live Autocomplete Search (Query: 'cat')",
+      "status": "PASS",
+      "details": "Returned 5 results in 116ms with price, category, thumbnail"
+    },
+    {
+      "domain": "Domain 2: Search",
+      "tc_id": "TC-2.2",
+      "name": "Species & Category Filters (Cats + Dry Food)",
+      "status": "PASS",
+      "details": "Returned 16 feline dry food products exclusively"
+    },
+    {
+      "domain": "Domain 2: Search",
+      "tc_id": "TC-2.3",
+      "name": "Sorting Mechanism (Price Asc/Desc)",
+      "status": "PASS",
+      "details": "Asc: [110.0, 150.0, 220.0, 240.0]... Desc: [4450.0, 4300.0, 3450.0, 3100.0]..."
+    },
+    {
+      "domain": "Domain 2: Search",
+      "tc_id": "TC-2.4",
+      "name": "Catalog Pagination (Page 2, PageSize 4)",
+      "status": "PASS",
+      "details": "Total items: 42, Total pages: 11"
+    },
+    {
+      "domain": "Domain 3: Product",
+      "tc_id": "TC-3.1",
+      "name": "Product Detail API Load (Product #2)",
+      "status": "PASS",
+      "details": "Loaded: 'Royal Canin Kitten Dry Food 2kg', Base Price: \u09f32850.0"
+    },
+    {
+      "domain": "Domain 3: Product",
+      "tc_id": "TC-3.2",
+      "name": "Mobile Momentum Scrollable Thumbnails & Tabs",
+      "status": "PASS",
+      "details": "Verified scroll-touch-x and scrollbar-none on thumbnails and tab headers"
+    },
+    {
+      "domain": "Domain 3: Product",
+      "tc_id": "TC-3.3",
+      "name": "Product Variants Availability & Differentiation",
+      "status": "PASS",
+      "details": "Found 4 variants. Variant 1: 400g Pouch - \u09f3650.0 (SKU: RC-CAT-KIT-400G)"
+    },
+    {
+      "domain": "Domain 3: Product",
+      "tc_id": "TC-3.4",
+      "name": "Quantity Stepper Bounds (Min 1, Max 99)",
+      "status": "PASS",
+      "details": "Input min=1, max=99 and stepper logic confirmed"
+    },
+    {
+      "domain": "Domain 3: Product",
+      "tc_id": "TC-3.5",
+      "name": "Add to Cart Operation (2x Product #2)",
+      "status": "PASS",
+      "details": "Item added to server cart in 227ms, Server: Item added to cart."
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.1",
+      "name": "Cart Line Items Retrieval",
+      "status": "PASS",
+      "details": "Cart retrieved with 1 items. Subtotal: \u09f33250.0"
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.2",
+      "name": "Cart Item Quantity Modification (2 -> 3)",
+      "status": "PASS",
+      "details": "Quantity updated to 3, New Subtotal: \u09f31950.0"
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.3",
+      "name": "Cart Item Removal & Subtotal Recalculation",
+      "status": "PASS",
+      "details": "Deleted item #8 successfully"
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.4",
+      "name": "Delivery Fee Tier Calculation (Dhaka \u09f380 vs Outside \u09f3150)",
+      "status": "PASS",
+      "details": "Tiered shipping values verified in cart & checkout selectors"
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.5",
+      "name": "Valid Coupon Application ('PAW10' on \u09f32,500)",
+      "status": "PASS",
+      "details": "Discount granted: \u09f3250.0 (10.0% off)"
+    },
+    {
+      "domain": "Domain 4: Cart",
+      "tc_id": "TC-4.6",
+      "name": "Invalid Coupon Rejection ('INVALID99')",
+      "status": "PASS",
+      "details": "Properly rejected with message: 'Coupon code does not exist.'"
+    },
+    {
+      "domain": "Domain 5: Checkout",
+      "tc_id": "TC-5.1",
+      "name": "Bangladeshi Address Form Fields Validation",
+      "status": "PASS",
+      "details": "All 5 Bangladeshi shipping fields verified"
+    },
+    {
+      "domain": "Domain 5: Checkout",
+      "tc_id": "TC-5.2",
+      "name": "Payment Methods Matrix (COD, bKash, Nagad)",
+      "status": "PASS",
+      "details": "All 3 payment options active and styled"
+    },
+    {
+      "domain": "Domain 5: Checkout",
+      "tc_id": "TC-5.3",
+      "name": "End-to-End Order Placement (POST /api/orders)",
+      "status": "PASS",
+      "details": "Order #ORD-202610-58730 created in 301ms. Total: \u09f31835.0"
+    },
+    {
+      "domain": "Domain 6: Tracking",
+      "tc_id": "TC-6.1",
+      "name": "4-Stage Delivery Stepper (Placed -> Confirmed -> Shipped -> Delivered)",
+      "status": "PASS",
+      "details": "Order status is 'pending' with interactive 4-stage UI"
+    },
+    {
+      "domain": "Domain 6: Tracking",
+      "tc_id": "TC-6.2",
+      "name": "Order Line Items & Financial Breakdown",
+      "status": "PASS",
+      "details": "1 line item(s). Subtotal: \u09f31950.0, Total: \u09f31835.0"
+    },
+    {
+      "domain": "Domain 6: Tracking",
+      "tc_id": "TC-6.3",
+      "name": "Pending Order Cancellation (POST /orders/{id}/cancel)",
+      "status": "PASS",
+      "details": "Status transitioned to 'cancelled' in 56ms"
+    },
+    {
+      "domain": "Domain 7: Pets",
+      "tc_id": "TC-7.1",
+      "name": "Add Pet Modal UI Structure & Centering",
+      "status": "PASS",
+      "details": "Modal and responsive form controls verified in my-pets.html"
+    },
+    {
+      "domain": "Domain 7: Pets",
+      "tc_id": "TC-7.2",
+      "name": "Pet Profile Creation (Cat 'Milo the Cat')",
+      "status": "PASS",
+      "details": "Created Pet #7 (Milo the Cat) in 85ms"
+    },
+    {
+      "domain": "Domain 7: Pets",
+      "tc_id": "TC-7.3",
+      "name": "Dynamic Pet Recommendations for Milo (Feline Formulas)",
+      "status": "PASS",
+      "details": "Returned 8 tailored items (8 cat-specific formulas) in 58ms"
+    },
+    {
+      "domain": "Mobile UX",
+      "tc_id": "MOB-1",
+      "name": "iOS Auto-Zoom Prevention (font-size: 16px on inputs)",
+      "status": "PASS",
+      "details": "Rule present in frontend/css/custom.css"
+    },
+    {
+      "domain": "Mobile UX",
+      "tc_id": "MOB-2",
+      "name": "Sticky 5-Tab Mobile Bottom Navigation Bar",
+      "status": "PASS",
+      "details": "5 tabs (Home, Shop, Search, Cart, Account) present in layout.js"
+    },
+    {
+      "domain": "Mobile UX",
+      "tc_id": "MOB-3",
+      "name": "Mobile Tap Targets Minimum 44-48px Ergonomics",
+      "status": "PASS",
+      "details": "Touch targets configured across mobile navigation and buttons"
+    },
+    {
+      "domain": "Mobile UX",
+      "tc_id": "MOB-4",
+      "name": "Momentum Scrolling Ribbons & Scrollbar Removal",
+      "status": "PASS",
+      "details": "-webkit-overflow-scrolling: touch and scrollbar-none verified in custom.css"
+    },
+    {
+      "domain": "Mobile UX",
+      "tc_id": "MOB-5",
+      "name": "Viewport Meta Tag Present Across All 18 HTML Pages",
+      "status": "PASS",
+      "details": "Verified 100% across all 18 pages"
+    }
+  ]
+}

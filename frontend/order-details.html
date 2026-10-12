@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details & Tracking - PawHaven BD</title>
+  <meta name="description" content="Track your pet food order status, view shipment progress, delivery address, and invoice summary at PawHaven BD.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Breadcrumbs & Header -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+        <a href="index.html" class="hover:text-teal-600 transition">Home</a>
+        <span>/</span>
+        <a href="orders.html" class="hover:text-teal-600 transition">Orders</a>
+        <span>/</span>
+        <span id="breadcrumb-order-id" class="text-slate-800 font-bold">Order Details</span>
+      </nav>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <h1 id="order-title-header" class="text-2xl sm:text-3xl font-extrabold text-slate-900">Order Tracking</h1>
+        <div id="order-status-badge"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Order Details Area -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    
+    <div id="order-loading" class="py-16 text-center">
+      <div class="w-8 h-8 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+      <p class="text-sm text-slate-500">Retrieving order details...</p>
+    </div>
+
+    <div id="order-content" class="hidden space-y-8">
+      
+      <!-- Tracking Stepper Card -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-6">Delivery Progress</h2>
+        
+        <div id="order-stepper" class="grid grid-cols-4 gap-2 text-center">
+          <!-- Step 1: Placed -->
+          <div class="flex flex-col items-center">
+            <div id="step-dot-1" class="w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-xs mb-2">1</div>
+            <span class="text-xs font-bold text-slate-800">Placed</span>
+            <span class="text-[10px] text-slate-400">Order received</span>
+          </div>
+
+          <!-- Step 2: Confirmed -->
+          <div class="flex flex-col items-center">
+            <div id="step-dot-2" class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs mb-2">2</div>
+            <span class="text-xs font-bold text-slate-800">Confirmed</span>
+            <span class="text-[10px] text-slate-400">Packed in warehouse</span>
+          </div>
+
+          <!-- Step 3: Shipped -->
+          <div class="flex flex-col items-center">
+            <div id="step-dot-3" class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs mb-2">3</div>
+            <span class="text-xs font-bold text-slate-800">Shipped</span>
+            <span class="text-[10px] text-slate-400">Out for delivery</span>
+          </div>
+
+          <!-- Step 4: Delivered -->
+          <div class="flex flex-col items-center">
+            <div id="step-dot-4" class="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs mb-2">4</div>
+            <span class="text-xs font-bold text-slate-800">Delivered</span>
+            <span class="text-[10px] text-slate-400">Arrived at door</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Columns: Items & Address/Invoice -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Items in Order (7 cols) -->
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-4">
+          <h3 class="text-base font-extrabold text-slate-900 pb-3 border-b border-slate-100">Ordered Items</h3>
+          <div id="order-items-list" class="divide-y divide-slate-100"></div>
+
+          <!-- Cancel order button (shown only if Pending) -->
+          <div id="order-cancel-section" class="pt-4 border-t border-slate-100 hidden">
+            <button id="btn-cancel-order" class="px-4 py-2 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs transition">
+              Cancel Order
+            </button>
+            <span class="text-[11px] text-slate-400 ml-3">Orders can only be cancelled while in Pending state.</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Shipping Details & Financial Breakdown (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Shipping Address Card -->
+          <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-3">
+            <h3 class="text-base font-extrabold text-slate-900 pb-3 border-b border-slate-100">Shipping Details</h3>
+            <div class="text-xs space-y-1.5 text-slate-600">
+              <p><strong class="text-slate-900">Recipient:</strong> <span id="order-recipient-name"></span></p>
+              <p><strong class="text-slate-900">Phone:</strong> <span id="order-recipient-phone"></span></p>
+              <p><strong class="text-slate-900">Address:</strong> <span id="order-recipient-address"></span></p>
+              <p><strong class="text-slate-900">Region:</strong> <span id="order-recipient-region"></span></p>
+              <p id="order-note-wrap"><strong class="text-slate-900">Notes:</strong> <span id="order-recipient-notes"></span></p>
+            </div>
+          </div>
+
+          <!-- Invoice Summary Card -->
+          <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-3">
+            <h3 class="text-base font-extrabold text-slate-900 pb-3 border-b border-slate-100">Invoice Summary</h3>
+            <div class="space-y-2 text-xs sm:text-sm text-slate-600">
+              <div class="flex justify-between">
+                <span>Subtotal</span>
+                <span id="order-subtotal" class="font-bold text-slate-800">৳ 0</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Discount</span>
+                <span id="order-discount" class="font-bold text-emerald-600">-৳ 0</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Shipping Fee</span>
+                <span id="order-shipping-fee" class="font-bold text-slate-800">৳ 0</span>
+              </div>
+              <div class="pt-3 border-t border-slate-100 flex justify-between font-black text-slate-900 text-base">
+                <span>Total Paid / Payable</span>
+                <span id="order-grand-total" class="text-teal-700 text-lg">৳ 0</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get("id");
+
+      if (!orderId) {
+        window.location.href = "orders.html";
+        return;
+      }
+
+      const loading = document.getElementById("order-loading");
+      const content = document.getElementById("order-content");
+
+      try {
+        const res = await window.api.getOrderById(orderId);
+        if (!res.success || !res.data) {
+          loading.innerHTML = `<div class="py-12 text-center text-red-500">Order not found or permission denied.</div>`;
+          return;
+        }
+
+        const o = res.data;
+        document.getElementById("breadcrumb-order-id").textContent = `#${o.orderNumber}`;
+        document.getElementById("order-title-header").textContent = `Order #${o.orderNumber}`;
+
+        // Badge
+        const badgeContainer = document.getElementById("order-status-badge");
+        let badgeColor = "bg-amber-50 text-amber-700 border-amber-200";
+        if (o.orderStatus?.toLowerCase() === "delivered") badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+        else if (o.orderStatus?.toLowerCase() === "shipped") badgeColor = "bg-blue-50 text-blue-700 border-blue-200";
+        else if (o.orderStatus?.toLowerCase() === "cancelled") badgeColor = "bg-red-50 text-red-700 border-red-200";
+
+        badgeContainer.innerHTML = `<span class="px-3 py-1 rounded-full text-xs font-bold border ${badgeColor}">${o.orderStatus || 'Pending'}</span>`;
+
+        // Update Stepper
+        const status = o.orderStatus?.toLowerCase() || "pending";
+        const dot1 = document.getElementById("step-dot-1");
+        const dot2 = document.getElementById("step-dot-2");
+        const dot3 = document.getElementById("step-dot-3");
+        const dot4 = document.getElementById("step-dot-4");
+
+        if (status === "confirmed" || status === "processing" || status === "shipped" || status === "delivered") {
+          dot2.classList.replace("bg-slate-200", "bg-teal-600");
+          dot2.classList.replace("text-slate-500", "text-white");
+        }
+        if (status === "shipped" || status === "delivered") {
+          dot3.classList.replace("bg-slate-200", "bg-teal-600");
+          dot3.classList.replace("text-slate-500", "text-white");
+        }
+        if (status === "delivered") {
+          dot4.classList.replace("bg-slate-200", "bg-emerald-600");
+          dot4.classList.replace("text-slate-500", "text-white");
+        }
+
+        // Render Items
+        const itemsList = document.getElementById("order-items-list");
+        itemsList.innerHTML = (o.items || []).map(item => {
+          const imgUrl = window.resolveImageUrl(item.imageUrl, item.productName);
+          return `
+            <div class="py-4 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 bg-slate-50 rounded-xl p-1.5 border border-slate-100 shrink-0 flex items-center justify-center">
+                  <img src="${imgUrl}" alt="${item.productName}" class="max-w-full max-h-full object-contain">
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-xs sm:text-sm">${item.productName}</h4>
+                  ${item.variantName ? `<span class="text-[11px] text-teal-700 font-semibold">${item.variantName}</span>` : ''}
+                  <p class="text-[11px] text-slate-400">Qty: ${item.quantity} × ${window.formatPrice(item.unitPrice)}</p>
+                </div>
+              </div>
+              <span class="font-black text-slate-900 text-sm">${window.formatPrice(item.totalPrice || item.unitPrice * item.quantity)}</span>
+            </div>
+          `;
+        }).join("");
+
+        // Cancel order button if pending
+        if (status === "pending") {
+          const cancelSec = document.getElementById("order-cancel-section");
+          cancelSec.classList.remove("hidden");
+          document.getElementById("btn-cancel-order").addEventListener("click", async () => {
+            if (!confirm("Are you sure you want to cancel this order?")) return;
+            const cRes = await window.api.cancelOrder(o.id);
+            if (cRes.success) {
+              window.showToast("Order cancelled successfully.", "info");
+              setTimeout(() => location.reload(), 600);
+            } else {
+              window.showToast(cRes.message || "Could not cancel order.", "error");
+            }
+          });
+        }
+
+        // Shipping details
+        document.getElementById("order-recipient-name").textContent = o.shippingFullName || "N/A";
+        document.getElementById("order-recipient-phone").textContent = o.shippingPhone || "N/A";
+        document.getElementById("order-recipient-address").textContent = o.shippingAddressLine || "N/A";
+        document.getElementById("order-recipient-region").textContent = `${o.shippingArea || ''}, ${o.shippingDistrict || ''}, ${o.shippingDivision || ''}`;
+        if (o.customerNotes) {
+          document.getElementById("order-recipient-notes").textContent = o.customerNotes;
+        } else {
+          document.getElementById("order-note-wrap").classList.add("hidden");
+        }
+
+        // Financial totals
+        document.getElementById("order-subtotal").textContent = window.formatPrice(o.subtotal);
+        document.getElementById("order-discount").textContent = `-${window.formatPrice(o.discountAmount || 0)}`;
+        document.getElementById("order-shipping-fee").textContent = window.formatPrice(o.shippingCost || 0);
+        document.getElementById("order-grand-total").textContent = window.formatPrice(o.totalAmount);
+
+        loading.classList.add("hidden");
+        content.classList.remove("hidden");
+      } catch (err) {
+        loading.innerHTML = `<div class="py-12 text-center text-red-500">Failed to load order.</div>`;
+      }
+    });
+  </script>
+</body>
+</html>

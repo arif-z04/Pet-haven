@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an Account - PawHaven BD</title>
+  <meta name="description" content="Register an account with PawHaven BD to order authentic pet nutrition, track shipments, and receive personalized pet profiles.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header Placeholder -->
+  <header id="site-header"></header>
+
+  <!-- Auth Main Area -->
+  <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-lg">
+      
+      <!-- Brand & Header -->
+      <div class="text-center">
+        <div class="w-12 h-12 bg-teal-600 rounded-2xl mx-auto flex items-center justify-center text-white mb-3 shadow-md shadow-teal-500/20">
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9c.83 0 1.5-.67 1.5-1.5S10.83 8 10 8s-1.5.67-1.5 1.5S9.17 11 10 11zm4 0c.83 0 1.5-.67 1.5-1.5S14.83 8 14 8s-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-2 5.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Create Pet Parent Account</h2>
+        <p class="text-xs text-slate-500 mt-1">Join thousands of caring pet owners across Bangladesh</p>
+      </div>
+
+      <!-- Register Form -->
+      <form id="register-form" class="space-y-4">
+        <div>
+          <label for="reg-name" class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
+          <input 
+            type="text" 
+            id="reg-name" 
+            required 
+            placeholder="e.g. Shakil Hossain"
+            class="w-full p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-teal-500 transition"
+          >
+        </div>
+
+        <div>
+          <label for="reg-email" class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+          <input 
+            type="email" 
+            id="reg-email" 
+            required 
+            placeholder="shakil@example.com"
+            class="w-full p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-teal-500 transition"
+          >
+        </div>
+
+        <div>
+          <label for="reg-phone" class="block text-xs font-bold text-slate-700 mb-1">Mobile Phone (e.g. 017xxxxxxxx) *</label>
+          <input 
+            type="tel" 
+            id="reg-phone" 
+            required 
+            placeholder="01711223344"
+            class="w-full p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-teal-500 transition"
+          >
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="reg-password" class="block text-xs font-bold text-slate-700 mb-1">Password *</label>
+            <input 
+              type="password" 
+              id="reg-password" 
+              required 
+              minlength="6"
+              placeholder="••••••••"
+              class="w-full p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-teal-500 transition"
+            >
+          </div>
+          <div>
+            <label for="reg-confirm-password" class="block text-xs font-bold text-slate-700 mb-1">Confirm Password *</label>
+            <input 
+              type="password" 
+              id="reg-confirm-password" 
+              required 
+              minlength="6"
+              placeholder="••••••••"
+              class="w-full p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-teal-500 transition"
+            >
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <input type="checkbox" id="reg-terms" required class="rounded text-teal-600 focus:ring-teal-500">
+          <label for="reg-terms" class="text-xs text-slate-600">
+            I agree to the <a href="about.html" class="text-teal-600 font-bold hover:underline">Terms of Service</a> & authentic item policies.
+          </label>
+        </div>
+
+        <button 
+          type="submit" 
+          id="reg-submit-btn" 
+          class="w-full py-3.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm transition shadow-md shadow-teal-600/20 flex items-center justify-center gap-2"
+        >
+          <span>Complete Registration</span>
+        </button>
+      </form>
+
+      <!-- Sign In Link -->
+      <div class="text-center text-xs text-slate-500 pt-3 border-t border-slate-100">
+        Already have an account? 
+        <a href="login.html" class="font-extrabold text-teal-600 hover:underline">Sign In here</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="components/layout.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("reg-name").value.trim();
+      const email = document.getElementById("reg-email").value.trim();
+      const phone = document.getElementById("reg-phone").value.trim();
+      const password = document.getElementById("reg-password").value;
+      const confirmPassword = document.getElementById("reg-confirm-password").value;
+      const btn = document.getElementById("reg-submit-btn");
+
+      if (password !== confirmPassword) {
+        window.showToast("Passwords do not match.", "warning");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span>Creating Account...</span>`;
+
+      try {
+        const payload = { name, email, phone, password };
+        const res = await window.api.register(payload);
+        if (res.success && res.data) {
+          window.AuthManager.saveSession(res.data);
+          window.showToast("Account created successfully! Welcome to PawHaven BD.", "success");
+          setTimeout(() => {
+            window.location.href = "my-pets.html";
+          }, 800);
+        } else {
+          window.showToast(res.message || "Failed to create account. Email may already exist.", "error");
+          btn.disabled = false;
+          btn.innerHTML = `<span>Complete Registration</span>`;
+        }
+      } catch (err) {
+        window.showToast("Server connection error during registration.", "error");
+        btn.disabled = false;
+        btn.innerHTML = `<span>Complete Registration</span>`;
+      }
+    });
+  </script>
+</body>
+</html>
